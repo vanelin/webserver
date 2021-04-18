@@ -36,6 +36,9 @@ $ cd vanelin
 ```bash
 // building
 $ docker build --rm -t mini-webserver .
+
 $ docker run -d -p 8000:8000 --name=web-server  mini-webserver:latest
+or
+$ docker-compose up
 ```
 The web server is available at http://localhost:8000
