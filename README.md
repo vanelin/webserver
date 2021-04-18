@@ -21,9 +21,21 @@ Similar to installing netcat in Debian based Linux, an nc symlink will be create
 For brevity, in the examples that follow, we’ll use nc instead of netcat or ncat when running the command.
 
 
-### NetCat (nc) as a single-line webserver.
+### NetCat (nc) as a webserver
 This command will run http static server, available at http://localhost:8000.
 
-```shell
+```bash
 $ while true; do echo -e "HTTP/1.1 200 OK\r\n\r\n<h1>$(hostname) is live</h1>$(date)" | nc -vl -p 8000 -q 1; done
 ```
+
+### Building and running the Docker container
+```bash
+$ https://github.com/vanelin/vanelin.git
+$ cd vanelin
+```
+```bash
+// building
+$ docker build --rm -t mini-webserver .
+$ docker run -d -p 8000:8000 --name=web-server  mini-webserver:latest
+```
+The web server is available at http://localhost:8000
